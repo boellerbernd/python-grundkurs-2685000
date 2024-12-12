@@ -15,3 +15,13 @@
 # Wörter: 5
 
 # Optional: Erweitern Sie das Skript, um auch die Anzahl der Vokale und Konsonanten zu zählen.
+import argparse
+
+parser = argparse.ArgumentParser("")
+parser.add_argument("text", help="Text")
+parser.add_argument("--details", action='store_true')
+args = parser.parse_args()
+
+print("Zeichen: ",len(args.text))
+if args.details != None:
+    print("Wörter: ", len(args.text.split()))
