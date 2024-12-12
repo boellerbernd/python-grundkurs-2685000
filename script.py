@@ -22,12 +22,12 @@ import argparse
 parser = argparse.ArgumentParser("")
 parser.add_argument("zahl1", help="Erste Zahl", type=int)
 parser.add_argument("zahl2", help="Zweite Zahl", type=int)
-parser.add_argument("--operation", help="Mögliche Optionen: 'add' (Addition), 'sub' (Subtraktion), 'mul' (Multiplikation), 'div' (Division).")
-
+#parser.add_argument("--operation", help="Mögliche Optionen: 'add' (Addition), 'sub' (Subtraktion), 'mul' (Multiplikation), 'div' (Division).")
+parser.add_argument("--operation", choices=["add","sub","mul","div"],default="add", help="Mögliche Optionen: 'add' (Addition), 'sub' (Subtraktion), 'mul' (Multiplikation), 'div' (Division).")
 args = parser.parse_args()
 ergebnis = None
 
-if args.operation == "add" or args.operation == None:
+if args.operation == "add":
     ergebnis = args.zahl1 + args.zahl2
 elif args.operation == "sub":
     ergebnis = args.zahl1 - args.zahl2
