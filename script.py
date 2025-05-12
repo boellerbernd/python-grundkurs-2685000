@@ -26,3 +26,64 @@
 # Optional: 
 # - Fügen Sie weitere Funktionen hinzu, wie z.B. Potenzierung oder Modulo.
 # - Implementieren Sie eine Schleife, um mehrere Berechnungen hintereinander durchzuführen, bis der Benutzer das Programm beendet.
+
+def add_numbers(zahl1: float, zahl2: float) -> float:
+    """Addiert zwei Zahlen"""
+    return zahl1 + zahl2
+
+def substract_numbers(zahl1: float, zahl2: float) -> float:
+    """Subtrahiert zwei Zahlen"""
+    return zahl1 - zahl2
+
+def multiply_numbers(zahl1: float, zahl2: float) -> float:
+    """Multipliziert zwei Zahlen"""
+    return zahl1 * zahl2
+
+def divide_numbers(zahl1: float, zahl2: float) -> float:
+    """Dividiert zwei Zahlen"""
+
+    if zahl2==0:
+        print("Division durch 0 nicht möglich!")
+        return None
+    
+    return zahl1 / zahl2
+
+
+def main():
+    """Hauptfunktion, die den Benutzer durch die Berechnungen führt."""
+    try:
+        number1 = float(input("Geben Sie die erste Zahl ein: "))
+        number2 = float(input("Geben Sie die zweite Zahl ein: "))
+    except ValueError:
+        print("Ungültige Eingabe. Bitte geben Sie gültige Zahlen ein.")
+        return
+
+    print("Wählen Sie die Operation:")
+    print("+: Addition")
+    print("-: Subtraktion")
+    print("*: Multiplikation")
+    print("/: Division")
+
+    operation = input("Geben Sie die Nummer der gewünschten Operation ein: ")
+
+    if operation == '+':
+        result = add_numbers(number1, number2)
+        operation_name = "Addition"
+    elif operation == '-':
+        result = subtract_numbers(number1, number2)
+        operation_name = "Subtraktion"
+    elif operation == '*':
+        result = multiply_numbers(number1, number2)
+        operation_name = "Multiplikation"
+    elif operation == '/':
+        result = divide_numbers(number1, number2)
+        operation_name = "Division"
+    else:
+        print("Ungültige Auswahl. Bitte wählen Sie eine gültige Operation.")
+        return
+
+    if result is not None:
+        print(f"Das Ergebnis der {operation_name} von {number1} und {number2} ist: {result}")
+
+if __name__ == "__main__":
+    main()
