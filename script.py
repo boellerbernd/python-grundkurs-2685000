@@ -42,19 +42,28 @@ class BankAccount:
 
     def __init__(self, inhaber: str, kontonummer: str, start_kontostand: float = 0.0):
         """Initialisiert den Kontoinhaber, die Kontonummer und den anfänglichen Kontostand."""
-        self.inhaber = inhaber
-        self.kontonummer = kontonummer
-        self._kontostand = start_kontostand
-        self._transaktionen: List[Tuple[str, float]] = []
+        try:
+            self.inhaber = inhaber
+            self.kontonummer = kontonummer
+            self._kontostand = start_kontostand
+            self._transaktionen: List[Tuple[str, float]] = []
+            überprüfe_positiven_wert(self._kontostand)
+        except ValueError as e:
+            print(f"Fehler: {e}")
+
 
     def einzahlen(self, betrag: float) -> None:
         """Erhöht den Kontostand um den eingezahlten Betrag."""
-        if betrag > 0:
-            self._kontostand += betrag
-            self._transaktionen.append(("Einzahlung", betrag))
-            print(f"{betrag} EUR wurden eingezahlt.")
-        else:
-            print("Einzahlung fehlgeschlagen: Betrag muss positiv sein.")
+        try:
+            überprüfe_positiven_wert(betrag)
+            if betrag > 0:
+                self._kontostand += betrag
+                self._transaktionen.append(("Einzahlung", betrag))
+                print(f"{betrag} EUR wurden eingezahlt.")
+            else:
+                print("Einzahlung fehlgeschlagen: Betrag muss positiv sein.")
+        except ValueError as e:
+             print(f"Fehler: {e}")
 
     def abheben(self, betrag: float) -> None:
         """Verringert den Kontostand um den abgehobenen Betrag, wenn genügend Guthaben vorhanden ist."""
