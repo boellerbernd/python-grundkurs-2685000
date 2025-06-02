@@ -51,3 +51,19 @@ class BankAccount:
     
 # Aufgabe: Erstellen Sie ein neues Jugendbankkonto, dass von der Klasse 
 # BankAccount erbt und beschränken sie die Abhebungen auf maximal 25€.
+
+class Jugendbankkonto(BankAccount):
+
+    def abheben(self, betrag: float) -> None:
+        """Verringert den Kontostand um den abgehobenen Betrag, wenn genügend Guthaben vorhanden ist."""
+        if betrag <= 25:
+            super().abheben(betrag)
+        else:
+            raise ValueError("Abhebung fehlgeschlagen: Abhebebetrag > 25€ nicht erlaubt")
+
+
+
+konto = Jugendbankkonto("Benny","12345",50)
+konto.abheben(12)
+konto.abheben(26)
+
