@@ -13,16 +13,24 @@
   "editor.tabSize": 4,
   "editor.useTabStops": true,
   "emmet.triggerExpansionOnTab": true,
-  "explorer.openEditors.visible": 0,
+  "explorer.openEditors.visible": 1,
   "files.autoSave": "afterDelay",
   "screencastMode.onlyKeyboardShortcuts": true,
   "terminal.integrated.fontSize": 18,
-  "workbench.activityBar.visible": true,
   "workbench.colorTheme": "Visual Studio Dark",
   "workbench.fontAliasing": "antialiased",
   "workbench.statusBar.visible": true,
   "python.analysis.extraPaths": [
     "${workspaceFolder}/src",
     "./src"
-  ]
+  ],
+  "python.testing.unittestArgs": [
+    "-v",
+    "-s",
+    "./tests",
+    "-p",
+    "test_*.py"
+  ],
+  "python.testing.pytestEnabled": false,
+  "python.testing.unittestEnabled": true
 }
